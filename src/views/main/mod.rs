@@ -1,5 +1,6 @@
 mod header;
 
+use crate::components::table::Table;
 use gtk::{Inhibit};
 use gtk::Orientation::{Vertical};
 use gtk::prelude::*;
@@ -43,7 +44,8 @@ impl Widget for Win {
 
             #[name="app"]
             gtk::Box {
-                orientation: Vertical
+                orientation: Vertical,
+                Table
             },
 
             delete_event(_, _) => (Quit, Inhibit(false)),
