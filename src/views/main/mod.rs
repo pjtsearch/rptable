@@ -2,8 +2,8 @@ mod header;
 
 // use crate::components::table::Elements;
 // use crate::components::table::Table;
+use crate::components::periodic_table::element::Element;
 use std::collections::HashMap;
-use crate::components::periodic_table::Element;
 use crate::components::periodic_table::PeriodicTable;
 use gtk::{Inhibit};
 use gtk::Orientation::{Vertical};
