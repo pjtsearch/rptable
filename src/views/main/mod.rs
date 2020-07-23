@@ -1,11 +1,13 @@
 mod header;
 
+use crate::components::table::Elements;
 use crate::components::table::Table;
 use gtk::{Inhibit};
 use gtk::Orientation::{Vertical};
 use gtk::prelude::*;
 use relm_derive::{Msg, widget};
 use relm::{Component, Widget, init};
+use std::collections::HashMap;
 
 use header::Header;
 use self::WinMsg::*;
@@ -45,7 +47,12 @@ impl Widget for Win {
             #[name="app"]
             gtk::Box {
                 orientation: Vertical,
-                Table
+                Table(Elements{
+                    s:vec!["H".to_string(),"Li".to_string(),"Be".to_string(),"Na".to_string(),"Mg".to_string(),"K".to_string(),"Ca".to_string(),"".to_string(),"Rb".to_string(),"Sr".to_string(),"Cs".to_string(),"Ba".to_string(),"Fr".to_string(),"Ra".to_string()],
+                    p:vec![],
+                    d:vec![],
+                    f:vec![],
+                })
             },
 
             delete_event(_, _) => (Quit, Inhibit(false)),
