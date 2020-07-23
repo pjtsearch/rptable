@@ -1,3 +1,6 @@
+use crate::utils::add_class::add_class;
+use crate::utils::use_css::use_css;
+use gtk::Orientation::Vertical;
 use relm::Relm;
 use relm_derive::{Msg, widget};
 use relm::Widget;
@@ -31,8 +34,15 @@ impl Widget for ElementWidget {
         
     }
 
+    fn init_view(&mut self){
+        add_class(self.element.clone(),vec!["element"]);
+        add_class(self.name.clone(),vec!["name","secondary"]);
+        add_class(self.symbol.clone(),vec!["symbol"]);
+        use_css(include_bytes!("element.css"));
+    }
+
     view! {
-        #[name="table"]
+        #[name="element"]
         gtk::Button {
             hexpand:true,
             vexpand:true,
@@ -41,9 +51,12 @@ impl Widget for ElementWidget {
             margin_start:3,
             margin_end:3,
             gtk::Box{
-                // gtk::Label {
-                //     text:&self.model.element.name
-                // },
+                orientation:Vertical,
+                #[name="name"]
+                gtk::Label {
+                    text:&self.model.element.name
+                },
+                #[name="symbol"]
                 gtk::Label {
                     text:&self.model.element.symbol
                 },  
