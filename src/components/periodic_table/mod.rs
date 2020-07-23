@@ -39,6 +39,8 @@ impl Widget for PeriodicTable {
             btn.set_margin_bottom(3);
             btn.set_margin_start(3);
             btn.set_margin_end(3);
+            btn.set_hexpand(true);
+            btn.set_vexpand(true);
             self.table.clone().attach(
                 &btn,
                 element.xpos as i32-1,
@@ -53,7 +55,8 @@ impl Widget for PeriodicTable {
     view! {
         #[name="table"]
         gtk::Grid {
-            
+            hexpand:true,
+            vexpand:true
         }
     }
 }

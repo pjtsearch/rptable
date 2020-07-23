@@ -3,7 +3,6 @@ mod header;
 // use crate::components::table::Elements;
 // use crate::components::table::Table;
 use std::collections::HashMap;
-use toml::map::Map;
 use crate::components::periodic_table::Element;
 use crate::components::periodic_table::PeriodicTable;
 use gtk::{Inhibit};
@@ -33,7 +32,6 @@ impl Widget for Win {
         let header = init::<Header>("Periodic Table".to_string()).expect("Header");
         let elements_map:HashMap<&str,Vec<Element>> = toml::from_str(include_str!("../../assets/elements.toml")).expect("could not load elements");
         let elements:Vec<Element> = elements_map["elements"].clone();
-        println!("{:#?}",elements);
 
         Model {
             header,
