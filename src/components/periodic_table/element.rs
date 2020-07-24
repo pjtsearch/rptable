@@ -10,6 +10,7 @@ use self::ElementMsg::*;
 use crate::views::detail::DetailWin;
 
 pub struct ElementModel {
+    element:Element,
     name:String,
     symbol:String,
     atomic_mass:String
@@ -53,6 +54,7 @@ pub enum ElementMsg {
 impl Widget for ElementWidget {
     fn model(_relm: &Relm<Self>, element: Element) -> ElementModel {
         ElementModel {
+            element:element.clone(),
             name:element.name,
             symbol:element.symbol,
             atomic_mass:format!("{:.2}",element.atomic_mass),
@@ -61,7 +63,7 @@ impl Widget for ElementWidget {
 
     fn update(&mut self, event: ElementMsg) {
         match event {
-            OpenDetail => DetailWin::run(()).clone().unwrap()
+            OpenDetail => DetailWin::run(self.model.element.clone()).clone().unwrap()
         }
     }
 

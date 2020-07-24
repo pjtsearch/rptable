@@ -1,4 +1,6 @@
 mod header;
+use relm::Relm;
+use crate::components::periodic_table::element::Element;
 use gtk::Orientation::{Vertical};
 use gtk::prelude::*;
 use relm_derive::{Msg, widget};
@@ -9,7 +11,8 @@ use self::DetailWinMsg::*;
 
 
 pub struct Model {
-    header: Component<Header>
+    header: Component<Header>,
+    element:Element
 }
 
 #[derive(Msg)]
@@ -19,11 +22,12 @@ pub enum DetailWinMsg {
 
 #[widget]
 impl Widget for DetailWin {
-    fn model() -> Model {
-        let header = init::<Header>("Detail".to_string()).expect("Header");
+    fn model(_relm: &Relm<Self>, element: Element) -> Model {
+        let header = init::<Header>(element.clone().name).expect("Header");
 
         Model {
-            header
+            header,
+            element
         }
     }
 
