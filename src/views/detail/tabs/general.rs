@@ -1,3 +1,5 @@
+use crate::components::typography::field::Field;
+use crate::components::typography::h1::H1;
 use gtk::Orientation::Vertical;
 use crate::components::typography::primary::Primary;
 use crate::components::typography::h2::H2;
@@ -31,8 +33,13 @@ impl Widget for GeneralTab {
             margin_top:5,margin_bottom:5,margin_start:5,margin_end:5,
             orientation:Vertical,
             #[name="name"]
+            H1(self.model.element.symbol.clone()),
             H2(self.model.element.name.clone()),
-            Primary(self.model.element.summary.clone())
+            Primary(self.model.element.summary.clone()),
+            Field("Atomic Number: ".to_string(),self.model.element.number.to_string()),
+            Field("Atomic Mass: ".to_string(),self.model.element.atomic_mass.to_string()),
+            Field("Electronegativity: ".to_string(),self.model.element.electronegativity_pauling.as_ref().map_or("N/A".to_string(), f64::to_string)),
+            Field("Electron Affinity: ".to_string(),self.model.element.electron_affinity.as_ref().map_or("N/A".to_string(), f64::to_string)),
         }
     }
 }

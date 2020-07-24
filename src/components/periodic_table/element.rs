@@ -11,7 +11,7 @@ use crate::views::detail::DetailWin;
 
 pub struct ElementModel {
     element:Element,
-    name:String,
+    number:String,
     symbol:String,
     atomic_mass:String
 }
@@ -55,7 +55,7 @@ impl Widget for ElementWidget {
     fn model(_relm: &Relm<Self>, element: Element) -> ElementModel {
         ElementModel {
             element:element.clone(),
-            name:element.name,
+            number:element.number.to_string(),
             symbol:element.symbol,
             atomic_mass:format!("{:.2}",element.atomic_mass),
         }
@@ -80,7 +80,7 @@ impl Widget for ElementWidget {
             gtk::Box{
                 orientation:Vertical,
                 #[name="name"]
-                Secondary(self.model.name.clone()),
+                Secondary(self.model.number.clone()),
                 #[name="symbol"]
                 Primary(self.model.symbol.clone()),
                 #[name="mass"]
