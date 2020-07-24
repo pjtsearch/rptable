@@ -1,3 +1,5 @@
+use gtk::Orientation::Vertical;
+use crate::components::typography::primary::Primary;
 use crate::components::typography::h2::H2;
 use crate::components::periodic_table::element::Element;
 use gtk::prelude::*;
@@ -27,8 +29,10 @@ impl Widget for GeneralTab {
         #[name="tab_general"]
         gtk::Box{
             margin_top:5,margin_bottom:5,margin_start:5,margin_end:5,
+            orientation:Vertical,
             #[name="name"]
-            H2(self.model.element.name.clone())
+            H2(self.model.element.name.clone()),
+            Primary(self.model.element.summary.clone())
         }
     }
 }

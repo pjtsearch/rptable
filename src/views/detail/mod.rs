@@ -39,20 +39,25 @@ impl Widget for DetailWin {
         }
     }
 
+    fn init_view(&mut self) {
+        // self.window.set_default_size(650,550);
+    }
+
     view! {
         #[name="window"]
         gtk::Window {
             titlebar: Some(self.model.header.widget()),
+            property_height_request: 600,
+            property_width_request: 500,
 
             #[name="app"]
             gtk::Box {
                 orientation: Vertical,
                 #[name="tabs"]
                 gtk::Notebook {
-
-
                     #[name="tab_general"]
-                    gtk::Box{
+                    gtk::ScrolledWindow{
+                        vexpand:true,
                         child: {tab_label: Some("General")},
                         GeneralTab(self.model.element.clone())
                     }

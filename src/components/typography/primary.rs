@@ -27,6 +27,7 @@ impl Widget for Primary {
     view! {
         #[name="primary"]
         gtk::Label{
+            line_wrap:true,
             text:&self.model.text
         }
     }
