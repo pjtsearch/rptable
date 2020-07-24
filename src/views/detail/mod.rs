@@ -1,4 +1,6 @@
 mod header;
+mod tabs;
+use tabs::general::GeneralTab;
 use relm::Relm;
 use crate::components::periodic_table::element::Element;
 use gtk::Orientation::{Vertical};
@@ -45,6 +47,18 @@ impl Widget for DetailWin {
             #[name="app"]
             gtk::Box {
                 orientation: Vertical,
+                #[name="tabs"]
+                gtk::Notebook {
+
+
+                    #[name="tab_general"]
+                    gtk::Box{
+                        child: {tab_label: Some("General")},
+                        GeneralTab(self.model.element.clone())
+                    }
+
+
+                },
             },
             delete_event(_, _) => (Quit, Inhibit(false))
         }
