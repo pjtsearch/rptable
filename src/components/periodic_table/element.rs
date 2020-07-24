@@ -6,9 +6,10 @@ use relm_derive::{Msg, widget};
 use relm::Widget;
 use gtk::prelude::*;
 use serde_derive::{Deserialize,Serialize};
+use self::ElementMsg::*;
+use crate::views::detail::DetailWin;
 
 pub struct ElementModel {
-    element: Element,
     name:String,
     symbol:String,
     atomic_mass:String
@@ -43,24 +44,25 @@ pub struct Element {
     pub ionization_energies:Vec<f64>
 }
 
-#[derive(Msg)]
+#[derive(Msg,Debug)]
 pub enum ElementMsg {
-
+    OpenDetail
 }
 
 #[widget]
 impl Widget for ElementWidget {
     fn model(_relm: &Relm<Self>, element: Element) -> ElementModel {
         ElementModel {
-            element:element.clone(),
             name:element.name,
             symbol:element.symbol,
             atomic_mass:format!("{:.2}",element.atomic_mass),
         }
     }
 
-    fn update(&mut self, _event: ElementMsg) {
-        
+    fn update(&mut self, event: ElementMsg) {
+        match event {
+            OpenDetail => DetailWin::run(()).clone().unwrap()
+        }
     }
 
     fn init_view(&mut self){
@@ -80,6 +82,7 @@ impl Widget for ElementWidget {
             margin_bottom:3,
             margin_start:3,
             margin_end:3,
+            clicked => OpenDetail,
             gtk::Box{
                 orientation:Vertical,
                 #[name="name"]

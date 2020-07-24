@@ -7,7 +7,9 @@ use relm::Widget;
 use gtk::prelude::*;
 
 pub struct PeriodicTableModel {
-    elements: Vec<Element>
+    elements: Vec<Element>,
+    //HACK: need to store relm widget so that updates work. See https://github.com/antoyo/relm/issues/50#issuecomment-314931446
+    element_widgets: Vec<relm::Component<ElementWidget>>
 }
 
 #[derive(Msg)]
@@ -18,7 +20,7 @@ pub enum PeriodicTableMsg {
 #[widget]
 impl Widget for PeriodicTable {
     fn model(_relm: &Relm<Self>, elements: Vec<Element>) -> PeriodicTableModel {
-        PeriodicTableModel {elements}
+        PeriodicTableModel {elements,element_widgets:vec![]}
     }
 
     fn update(&mut self, _event: PeriodicTableMsg) {
@@ -29,7 +31,9 @@ impl Widget for PeriodicTable {
     fn init_view(&mut self){
         for element in self.model.elements.clone() {
             let relm_widget = init::<ElementWidget>(element.clone()).expect("Element");
-            let widget = relm_widget.widget();
+            //HACK: need to store relm widget so that updates work. See https://github.com/antoyo/relm/issues/50#issuecomment-314931446
+            self.model.element_widgets.push(relm_widget);
+            let widget = self.model.element_widgets[self.model.element_widgets.len()-1].widget();
             self.table.clone().attach(
                 widget,
                 element.xpos as i32-1,
