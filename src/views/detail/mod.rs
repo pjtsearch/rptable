@@ -1,5 +1,6 @@
 mod header;
 mod tabs;
+use crate::views::detail::tabs::thermal::ThermalTab;
 use tabs::general::GeneralTab;
 use relm::Relm;
 use crate::components::periodic_table::element::Element;
@@ -60,8 +61,13 @@ impl Widget for DetailWin {
                         vexpand:true,
                         child: {tab_label: Some("General")},
                         GeneralTab(self.model.element.clone())
-                    }
-
+                    },
+                    #[name="tab_thermal"]
+                    gtk::ScrolledWindow{
+                        vexpand:true,
+                        child: {tab_label: Some("Thermal")},
+                        ThermalTab(self.model.element.clone())
+                    },
 
                 },
             },
