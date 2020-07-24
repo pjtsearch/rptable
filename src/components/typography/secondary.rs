@@ -5,27 +5,27 @@ use relm_derive::{Msg, widget};
 use relm::{Widget};
 
 #[derive(Msg)]
-pub enum H2TabMsg {}
+pub enum SecondaryTabMsg {}
 
 pub struct Model {
     text: String
 }
 
 #[widget]
-impl Widget for H2 {
+impl Widget for Secondary {
     fn model(text:String) -> Model {
         Model {text}
     }
 
-    fn update(&mut self, _event: H2TabMsg) {}
+    fn update(&mut self, _event: SecondaryTabMsg) {}
 
     fn init_view(&mut self){
-        add_class(self.h2.clone(),vec!["h2"]);
+        add_class(self.secondary.clone(),vec!["secondary"]);
         use_css(CSS);
     }
 
     view! {
-        #[name="h2"]
+        #[name="secondary"]
         gtk::Label{
             text:&self.model.text
         }
@@ -33,7 +33,8 @@ impl Widget for H2 {
 }
 
 static CSS:&[u8] = "
-.h2 {
-    font-size:25px;
+.secondary {
+    font-size:12px;
+    opacity: 0.7;
 }
 ".as_bytes();

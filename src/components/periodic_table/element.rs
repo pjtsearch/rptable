@@ -1,5 +1,5 @@
-use crate::utils::add_class::add_class;
-use crate::utils::use_css::use_css;
+use crate::components::typography::primary::Primary;
+use crate::components::typography::secondary::Secondary;
 use gtk::Orientation::Vertical;
 use relm::Relm;
 use relm_derive::{Msg, widget};
@@ -67,14 +67,6 @@ impl Widget for ElementWidget {
         }
     }
 
-    fn init_view(&mut self){
-        add_class(self.element.clone(),vec!["element"]);
-        add_class(self.name.clone(),vec!["name","secondary"]);
-        add_class(self.mass.clone(),vec!["mass","secondary"]);
-        add_class(self.symbol.clone(),vec!["symbol"]);
-        use_css(include_bytes!("element.css"));
-    }
-
     view! {
         #[name="element"]
         gtk::Button {
@@ -88,17 +80,11 @@ impl Widget for ElementWidget {
             gtk::Box{
                 orientation:Vertical,
                 #[name="name"]
-                gtk::Label {
-                    text:&self.model.name
-                },
+                Secondary(self.model.name.clone()),
                 #[name="symbol"]
-                gtk::Label {
-                    text:&self.model.symbol
-                },  
+                Primary(self.model.symbol.clone()),
                 #[name="mass"]
-                gtk::Label {
-                    text:&self.model.atomic_mass
-                },  
+                Secondary(self.model.atomic_mass.clone())
             }          
         }
     }
