@@ -57,6 +57,7 @@ impl Widget for DetailWin {
                 orientation: Vertical,
                 #[name="tabs"]
                 gtk::Notebook {
+                    show_border:false,
                     #[name="tab_general"]
                     gtk::ScrolledWindow{
                         vexpand:true,
