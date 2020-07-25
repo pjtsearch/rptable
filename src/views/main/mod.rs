@@ -53,6 +53,10 @@ impl Widget for Win {
             #[name="app"]
             gtk::Box {
                 orientation: Vertical,
+                margin_top: 9,
+                margin_bottom: 9,
+                margin_start: 9,
+                margin_end: 9,
                 // Table(Elements{
                 //     s:vec!["H".to_string(),"Li".to_string(),"Be".to_string(),"Na".to_string(),"Mg".to_string(),"K".to_string(),"Ca".to_string(),"".to_string(),"Rb".to_string(),"Sr".to_string(),"Cs".to_string(),"Ba".to_string(),"Fr".to_string(),"Ra".to_string()],
                 //     p:vec![],
