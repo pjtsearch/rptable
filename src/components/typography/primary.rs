@@ -28,6 +28,7 @@ impl Widget for Primary {
         #[name="primary"]
         gtk::Label{
             line_wrap:true,
+            valign:gtk::Align::Start,
             text:&self.model.text
         }
     }

@@ -1,5 +1,6 @@
 mod header;
 mod tabs;
+use crate::views::detail::tabs::electronic::ElectronicTab;
 use crate::views::detail::tabs::thermal::ThermalTab;
 use tabs::general::GeneralTab;
 use relm::Relm;
@@ -68,7 +69,12 @@ impl Widget for DetailWin {
                         child: {tab_label: Some("Thermal")},
                         ThermalTab(self.model.element.clone())
                     },
-
+                    #[name="tab_electronic"]
+                    gtk::ScrolledWindow{
+                        vexpand:true,
+                        child: {tab_label: Some("Electronic")},
+                        ElectronicTab(self.model.element.clone())
+                    },
                 },
             },
             delete_event(_, _) => (Quit, Inhibit(false))
