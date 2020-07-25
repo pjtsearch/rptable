@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>com.pjtsearch.periodic_table</id>
+  <name>Periodic Table</name>
+  <project_license>GPL-3.0</project_license>
+  <metadata_license>CC0-1.0</metadata_license>
+  <developer_name>Peter PJT</developer_name>
+  <summary>View the periodic table and element details.</summary>
+  <url type="homepage">https://github.com/pjtsearch/periodic_table</url>
+  <description>
+  <p>
+    View the periodic table and element details.
+
+    Periodic Table is a simple periodic table viewer for GTK.  You can view the periodic table and details of the elements.
+  </p>
+  </description>
+  <launchable type="desktop-id">com.pjtsearch.periodic_table.desktop</launchable>
+  <categories>
+   <category>Science</category>
+   <category>GTK</category>
+  </categories>
+  <screenshots>
+    <screenshot type="default">
+      <image type="source">https://raw.githubusercontent.com/pjtsearch/periodic_table/master/data/screenshot.png</image>
+    </screenshot>
+  </screenshots>
+  <releases>
+    <release version="1.0.0" date="2020-07-25"/>
+  </releases>
+  <update_contact>peter.pjtsearch@gmail.com</update_contact>
+  <provides>
+    <binary>com.pjtsearch.periodic_table</binary>
+  </provides>
+</component>

@@ -1,0 +1,42 @@
+{
+    "app-id" : "com.pjtsearch.periodic_table",
+    "runtime" : "org.gnome.Platform",
+    "runtime-version" : "3.32",
+    "sdk" : "org.gnome.Sdk",
+    "sdk-extensions" : [
+        "org.freedesktop.Sdk.Extension.rust-stable"
+    ],
+    "command" : "com.pjtsearch.periodic_table",
+    "finish-args" : [
+        "--socket=x11",
+        "--socket=wayland",
+        "--device=dri",
+        "--share=ipc"
+    ],
+    "build-options" : {
+        "append-path" : "/usr/lib/sdk/rust-stable/bin",
+        "env" : {
+            "CARGO_HOME" : "/run/build/periodic_table/cargo",
+            "RUSTFLAGS" : "--error-format=short --remap-path-prefix =../",
+            "RUST_BACKTRACE" : "1"
+        }
+    },
+    "modules" : [
+        {
+            "name" : "periodic_table",
+            "buildsystem" : "simple",
+            "build-commands": [
+                "make",
+                "make install PREFIX=/app" 
+            ],
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://github.com/pjtsearch/periodic_table.git",
+                    "tag": "v1.0.0",
+                    "commit": "fe4832812fdf88fd98de58b0ab19125141f22385"
+                }
+            ]
+        }
+    ]
+}

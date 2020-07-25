@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Periodic Table
+GenericName=Periodic Table
+Comment=View the periodic table and element details.
+Categories=Science;GTK
+Icon=com.pjtsearch.periodic_table
+Exec=com.pjtsearch.periodic_table
+Terminal=false
+Type=Application
