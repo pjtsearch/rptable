@@ -35,6 +35,7 @@ impl Widget for GeneralTab {
             #[name="name"]
             H1(self.model.element.symbol.clone()),
             H2(self.model.element.name.clone()),
+            Field("Discovered By: ".to_string(),self.model.element.discovered_by.clone().unwrap_or("N/A".to_string())),
             Primary(self.model.element.summary.clone()),
             Field("Atomic Number: ".to_string(),self.model.element.number.to_string()),
             Field("Atomic Mass: ".to_string(),self.model.element.atomic_mass.to_string()),

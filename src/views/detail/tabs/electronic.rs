@@ -29,7 +29,6 @@ impl Widget for ElectronicTab {
         gtk::Box{
             margin_top:5,margin_bottom:5,margin_start:5,margin_end:5,
             orientation:Vertical,
-            #[name="name"]
             Field("Electron Configuration: ".to_string(),self.model.element.electron_configuration_semantic.to_string()),
             Field("Electronegativity: ".to_string(),self.model.element.electronegativity_pauling.as_ref().map_or("N/A".to_string(), f64::to_string)),
             Field("Electron Affinity: ".to_string(),self.model.element.electron_affinity.as_ref().map_or("N/A".to_string(), f64::to_string)),
