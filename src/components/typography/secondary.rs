@@ -46,7 +46,7 @@ mod tests {
     use super::Secondary;
 
     #[test]
-    fn primary() {
+    fn secondary() {
         let (_component, widgets) = relm::init_test::<Secondary>("1".to_string()).expect("init_test failed");
         let label = widgets.secondary;
 
