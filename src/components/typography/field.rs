@@ -43,3 +43,22 @@ static CSS:&[u8] = "
     
 }
 ".as_bytes();
+
+#[cfg(test)]
+mod tests {
+    use gtk::LabelExt;
+    use gtk_test::{assert_text};
+    use gtk::ContainerExt;
+    use glib::object::Cast;
+    use super::Field;
+
+    #[test]
+    fn field() {
+        let (_component, widgets) = relm::init_test::<Field>(("1".to_string(),"2".to_string())).expect("init_test failed");
+        let label1 = widgets.field.get_children()[0].clone().downcast::<gtk::Label>().expect("child must be a label");
+        let label2 = widgets.field.get_children()[1].clone().downcast::<gtk::Label>().expect("child must be a label");
+
+        assert_text!(label1, "1");
+        assert_text!(label2, "2");
+    }
+}

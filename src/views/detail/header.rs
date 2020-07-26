@@ -28,3 +28,19 @@ impl Widget for Header {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use gtk::HeaderBarExt;
+    use gtk_test::{assert_title};
+
+    use super::Header;
+
+    #[test]
+    fn detail_header() {
+        let (_component, widgets) = relm::init_test::<Header>("Test".to_string()).expect("init_test failed");
+        let label = widgets.titlebar;
+
+        assert_title!(label, "Test");
+    }
+}
