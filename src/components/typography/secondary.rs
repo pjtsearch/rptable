@@ -38,3 +38,18 @@ static CSS:&[u8] = "
     opacity: 0.7;
 }
 ".as_bytes();
+
+#[cfg(test)]
+mod tests {
+    use gtk::LabelExt;
+    use gtk_test::{assert_text};
+    use super::Secondary;
+
+    #[test]
+    fn primary() {
+        let (_component, widgets) = relm::init_test::<Secondary>("1".to_string()).expect("init_test failed");
+        let label = widgets.secondary;
+
+        assert_text!(label, "1");
+    }
+}

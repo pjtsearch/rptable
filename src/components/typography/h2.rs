@@ -37,3 +37,18 @@ static CSS:&[u8] = "
     font-size:25px;
 }
 ".as_bytes();
+
+#[cfg(test)]
+mod tests {
+    use gtk::LabelExt;
+    use gtk_test::{assert_text};
+    use super::H2;
+
+    #[test]
+    fn h2() {
+        let (_component, widgets) = relm::init_test::<H2>("1".to_string()).expect("init_test failed");
+        let label = widgets.h2;
+
+        assert_text!(label, "1");
+    }
+}

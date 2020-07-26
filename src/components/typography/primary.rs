@@ -39,3 +39,18 @@ static CSS:&[u8] = "
     
 }
 ".as_bytes();
+
+#[cfg(test)]
+mod tests {
+    use gtk::LabelExt;
+    use gtk_test::{assert_text};
+    use super::Primary;
+
+    #[test]
+    fn primary() {
+        let (_component, widgets) = relm::init_test::<Primary>("1".to_string()).expect("init_test failed");
+        let label = widgets.primary;
+
+        assert_text!(label, "1");
+    }
+}
