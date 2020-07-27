@@ -68,7 +68,15 @@ flatpak-release : target/release/periodic_table
 clean-all : clean
 	cargo clean
 
+deb : target/release/periodic_table
+	mkdir -p deb
+	mkdir -p deb/DEBIAN
+	cp data/com.pjtsearch.periodic_table.control deb/DEBIAN/control
+	make DESTDIR=deb install
+	dpkg-deb --build deb deb/com.pjtsearch.periodic_table.deb
+
 # Remove supplemental build files
 clean :
 	rm -rf flatpak/ flatpak-development/
+	rm -rf deb/ 
 

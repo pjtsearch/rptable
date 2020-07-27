@@ -1,0 +1,9 @@
+Package: periodic-table
+Version: 1.0.0
+Section: custom
+Priority: optional
+Architecture: all
+Essential: no
+Installed-Size: 4096
+Maintainer: Peter PJT
+Description: View the periodic table and element details.

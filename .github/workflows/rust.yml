@@ -22,8 +22,8 @@ jobs:
       run: cargo build --verbose
     - name: Run tests
       run: |
-        "export DISPLAY=:99.0";
-        "sh -e /etc/init.d/xvfb start";
+        export DISPLAY=:99.0;
+        sh -e /etc/init.d/xvfb start;
         sleep 3 ;
         openbox &;
         cargo test --verbose;
