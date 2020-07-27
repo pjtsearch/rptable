@@ -20,7 +20,7 @@ jobs:
       run: |
         sudo apt update; sudo apt install libgtk-3-dev flatpak flatpak-builder
         flatpak --user remote-add --from flathub https://flathub.org/repo/flathub.flatpakrepo
-        flatpak --user install flathub org.gnome.Platform//3.36 org.gnome.Sdk//3.32
+        flatpak install flathub org.gnome.Platform//3.36 org.gnome.Sdk//3.36
     - name: Build
       run: cargo build --release
     # - name: DEB
