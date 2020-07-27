@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
-      run: apt install pango cairo gtk 
+      run: sudo apt install pango cairo gtk 
     - name: Build
       run: cargo build --verbose
     - name: Run tests
