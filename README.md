@@ -1,7 +1,7 @@
 ![periodic table icon](data/com.pjtsearch.rptable.64.png)
-# Periodic Table
+# RPTable
 ![periodic table screenshot](data/screenshot.png)
-Periodic Table is a simple periodic table viewer for GTK written in Rust:sparkles:. 
+RPTable is a simple periodic table viewer for GTK written in Rust:sparkles:. 
 
 # Features
   - View the periodic table
@@ -9,7 +9,7 @@ Periodic Table is a simple periodic table viewer for GTK written in Rust:sparkle
 
 ### Installation
 
-Periodic Table requires [Rust](https://www.rust-lang.org/) to run.
+RPTable requires [Rust](https://www.rust-lang.org/) to run.
 
 ```sh
 make
@@ -21,7 +21,7 @@ make install
 
 Want to contribute? Great!
 
-Periodic Table uses Rust.
+RPTable uses Rust.
 
 Open your favorite Terminal and run this command.
 

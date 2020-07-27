@@ -29,7 +29,7 @@ pub enum WinMsg {
 #[widget]
 impl Widget for Win {
     fn model() -> Model {
-        let header = init::<Header>("Periodic Table".to_string()).expect("Header");
+        let header = init::<Header>("RPTable".to_string()).expect("Header");
         let elements_map:HashMap<&str,Vec<Element>> = toml::from_str(include_str!("../../assets/elements.toml")).expect("could not load elements");
         let elements:Vec<Element> = elements_map["elements"].clone();
 

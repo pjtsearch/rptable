@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
   <id>com.pjtsearch.rptable</id>
-  <name>Periodic Table</name>
+  <name>RPTable</name>
   <project_license>GPL-3.0</project_license>
   <metadata_license>CC0-1.0</metadata_license>
   <developer_name>Peter PJT</developer_name>
@@ -11,7 +11,7 @@
   <p>
     View the periodic table and element details.
 
-    Periodic Table is a simple periodic table viewer for GTK.  You can view the periodic table and details of the elements.
+    RPTable is a simple periodic table viewer for GTK.  You can view the periodic table and details of the elements.
   </p>
   </description>
   <launchable type="desktop-id">com.pjtsearch.rptable.desktop</launchable>
