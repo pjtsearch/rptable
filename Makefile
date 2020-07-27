@@ -16,15 +16,15 @@ sharedir=$(DESTDIR)$(PREFIX)/share
 .PHONY : clean clean-all install uninstall
 
 # Build the application
-target/release/periodic_table : src
+target/release/rptable : src
 	cargo build --release
 
 # Install onto the system
-install : target/release/periodic_table
+install : target/release/rptable
 	# Create the bindir, if need be
 	mkdir -p $(bindir)
 	# Install binary
-	$(INSTALL_PROGRAM) target/release/periodic_table $(bindir)/com.pjtsearch.periodic_table
+	$(INSTALL_PROGRAM) target/release/rptable $(bindir)/com.pjtsearch.rptable
 	# Create the sharedir and subfolders, if need be
 	mkdir -p $(sharedir)/icons/hicolor/scalable/apps/
 	mkdir -p $(sharedir)/icons/hicolor/64x64/apps/
@@ -32,48 +32,48 @@ install : target/release/periodic_table
 	mkdir -p $(sharedir)/applications/
 	mkdir -p $(sharedir)/metainfo/
 	# Install icons
-	$(INSTALL_DATA) data/com.pjtsearch.periodic_table.svg $(sharedir)/icons/hicolor/scalable/apps/com.pjtsearch.periodic_table.svg
-	$(INSTALL_DATA) data/com.pjtsearch.periodic_table.64.png $(sharedir)/icons/hicolor/64x64/apps/com.pjtsearch.periodic_table.png
-	$(INSTALL_DATA) data/com.pjtsearch.periodic_table.128.png $(sharedir)/icons/hicolor/128x128/apps/com.pjtsearch.periodic_table.png
+	$(INSTALL_DATA) data/com.pjtsearch.rptable.svg $(sharedir)/icons/hicolor/scalable/apps/com.pjtsearch.rptable.svg
+	$(INSTALL_DATA) data/com.pjtsearch.rptable.64.png $(sharedir)/icons/hicolor/64x64/apps/com.pjtsearch.rptable.png
+	$(INSTALL_DATA) data/com.pjtsearch.rptable.128.png $(sharedir)/icons/hicolor/128x128/apps/com.pjtsearch.rptable.png
 	# Force icon cache refresh
 	touch $(sharedir)/icons/hicolor
 	# Install application meta-data
-	$(INSTALL_DATA) data/com.pjtsearch.periodic_table.appdata.xml $(sharedir)/metainfo/com.pjtsearch.periodic_table.appdata.xml
+	$(INSTALL_DATA) data/com.pjtsearch.rptable.appdata.xml $(sharedir)/metainfo/com.pjtsearch.rptable.appdata.xml
 	# Install desktop file
-	$(INSTALL_DATA) data/com.pjtsearch.periodic_table.desktop $(sharedir)/applications/com.pjtsearch.periodic_table.desktop
+	$(INSTALL_DATA) data/com.pjtsearch.rptable.desktop $(sharedir)/applications/com.pjtsearch.rptable.desktop
 
 # Remove an existing install from the system
 uninstall :
 	# Remove the desktop file
-	rm -f $(sharedir)/applications/com.pjtsearch.periodic_table.desktop
+	rm -f $(sharedir)/applications/com.pjtsearch.rptable.desktop
 	# Remove the application metadata
-	rm -f $(sharedir)/metainfo/com.pjtsearch.periodic_table.appdata.xml
+	rm -f $(sharedir)/metainfo/com.pjtsearch.rptable.appdata.xml
 	# Remove the icon
-	rm -f $(sharedir)/icons/hicolor/scalable/apps/com.pjtsearch.periodic_table.svg
-	rm -f $(sharedir)/icons/hicolor/64x64/apps/com.pjtsearch.periodic_table.png
-	rm -f $(sharedir)/icons/hicolor/128x128/apps/com.pjtsearch.periodic_table.png
+	rm -f $(sharedir)/icons/hicolor/scalable/apps/com.pjtsearch.rptable.svg
+	rm -f $(sharedir)/icons/hicolor/64x64/apps/com.pjtsearch.rptable.png
+	rm -f $(sharedir)/icons/hicolor/128x128/apps/com.pjtsearch.rptable.png
 	# Remove the binary
-	rm -f $(bindir)/bin/com.pjtsearch.periodic_table
+	rm -f $(bindir)/bin/com.pjtsearch.rptable
 
 # Build a Flatpak package
-flatpak-development: target/release/periodic_table
+flatpak-development: target/release/rptable
 	mkdir -p flatpak-development
-	flatpak-builder flatpak-development data/com.pjtsearch.periodic_table-development.json
+	flatpak-builder flatpak-development data/com.pjtsearch.rptable-development.json
 
-flatpak-release : target/release/periodic_table
+flatpak-release : target/release/rptable
 	mkdir -p flatpak
-	flatpak-builder flatpak data/com.pjtsearch.periodic_table.json
+	flatpak-builder flatpak data/com.pjtsearch.rptable.json
 
 # Remove all files
 clean-all : clean
 	cargo clean
 
-deb : target/release/periodic_table
+deb : target/release/rptable
 	mkdir -p deb
 	mkdir -p deb/DEBIAN
-	cp data/com.pjtsearch.periodic_table.control deb/DEBIAN/control
+	cp data/com.pjtsearch.rptable.control deb/DEBIAN/control
 	make DESTDIR=deb install
-	dpkg-deb --build deb deb/com.pjtsearch.periodic_table.deb
+	dpkg-deb --build deb deb/com.pjtsearch.rptable.deb
 
 # Remove supplemental build files
 clean :

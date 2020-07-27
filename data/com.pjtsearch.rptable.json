@@ -1,31 +1,29 @@
 {
-    "app-id" : "com.pjtsearch.periodic_table",
+    "app-id" : "com.pjtsearch.rptable",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "3.32",
     "sdk" : "org.gnome.Sdk",
     "sdk-extensions" : [
         "org.freedesktop.Sdk.Extension.rust-stable"
     ],
-    "command" : "com.pjtsearch.periodic_table",
-    "tags" : [ "development" ],
-    "desktop-file-name-suffix" : " ☢️",
+    "command" : "com.pjtsearch.rptable",
     "finish-args" : [
         "--socket=x11",
         "--socket=wayland",
-        "--device=dri"
+        "--device=dri",
+        "--share=ipc"
     ],
     "build-options" : {
         "append-path" : "/usr/lib/sdk/rust-stable/bin",
-        "build-args" : [],
         "env" : {
-            "CARGO_HOME" : "/run/build/periodic_table/cargo",
+            "CARGO_HOME" : "/run/build/rptable/cargo",
             "RUSTFLAGS" : "--error-format=short --remap-path-prefix =../",
             "RUST_BACKTRACE" : "1"
         }
     },
     "modules" : [
         {
-            "name" : "periodic_table",
+            "name" : "rptable",
             "buildsystem" : "simple",
             "build-commands": [
                 "make",
@@ -33,8 +31,10 @@
             ],
             "sources" : [
                 {
-                    "type" : "dir",
-                    "path" : "../"
+                    "type" : "git",
+                    "url" : "https://github.com/pjtsearch/rptable.git",
+                    "tag": "v1.0.0",
+                    "commit": "fe4832812fdf88fd98de58b0ab19125141f22385"
                 }
             ]
         }

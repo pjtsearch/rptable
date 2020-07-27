@@ -1,5 +1,5 @@
 [package]
-name = "periodic_table"
+name = "rptable"
 version = "1.0.0"
 authors = ["Peter PJT <pjtsignups@gmail.com>"]
 edition = "2018"

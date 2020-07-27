@@ -1,4 +1,4 @@
-![periodic table icon](data/com.pjtsearch.periodic_table.64.png)
+![periodic table icon](data/com.pjtsearch.rptable.64.png)
 # Periodic Table
 ![periodic table screenshot](data/screenshot.png)
 Periodic Table is a simple periodic table viewer for GTK written in Rust:sparkles:. 

@@ -543,21 +543,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "periodic_table"
-version = "1.0.0"
-dependencies = [
- "gdk",
- "glib",
- "gtk",
- "gtk-test",
- "relm",
- "relm-derive",
- "serde",
- "serde_derive",
- "toml",
-]
-
-[[package]]
 name = "pin-project"
 version = "0.4.22"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -699,6 +684,21 @@ dependencies = [
  "proc-macro2 0.4.30",
  "quote 0.6.13",
  "syn 0.15.44",
+]
+
+[[package]]
+name = "rptable"
+version = "1.0.0"
+dependencies = [
+ "gdk",
+ "glib",
+ "gtk",
+ "gtk-test",
+ "relm",
+ "relm-derive",
+ "serde",
+ "serde_derive",
+ "toml",
 ]
 
 [[package]]
