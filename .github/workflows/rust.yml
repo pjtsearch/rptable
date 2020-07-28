@@ -24,12 +24,12 @@ jobs:
         flatpak --user install -y flathub org.freedesktop.Sdk.Extension.rust-stable//19.08
     - name: Build
       run: cargo build --release
-    # - name: DEB
-    #   run: make deb
+    - name: DEB
+      run: make deb
     - name: Flatpak
-      run: make flatpak-development; ls flatpak;
-    # - name: Upload Artifacts
-    #   uses: actions/upload-artifact@v2
-    #   with:
-    #     name: deb
-    #     path: deb/com.pjtsearch.rptable.deb
+      run: make flatpak-development; ls;
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: deb
+        path: deb/com.pjtsearch.rptable.deb
