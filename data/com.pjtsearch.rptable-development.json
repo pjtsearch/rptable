@@ -16,7 +16,9 @@
     ],
     "build-options" : {
         "append-path" : "/usr/lib/sdk/rust-stable/bin",
-        "build-args" : [],
+        "build-args" : [
+            "--share=network"
+        ],
         "env" : {
             "CARGO_HOME" : "/run/build/rptable/cargo",
             "RUSTFLAGS" : "--error-format=short --remap-path-prefix =../",
@@ -28,6 +30,7 @@
             "name" : "rptable",
             "buildsystem" : "simple",
             "build-commands": [
+                "make",
                 "make install PREFIX=/app" 
             ],
             "sources" : [
