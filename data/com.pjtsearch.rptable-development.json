@@ -28,7 +28,6 @@
             "name" : "rptable",
             "buildsystem" : "simple",
             "build-commands": [
-                "make",
                 "make install PREFIX=/app" 
             ],
             "sources" : [
