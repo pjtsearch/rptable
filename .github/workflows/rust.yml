@@ -26,10 +26,15 @@ jobs:
       run: cargo build --release
     - name: DEB
       run: make deb
-    - name: Flatpak
-      run: make flatpak-development; ls;
-    - name: Upload Artifacts
+    - name: Upload Deb
       uses: actions/upload-artifact@v2
       with:
         name: deb
         path: deb/com.pjtsearch.rptable.deb
+    - name: Flatpak
+      run: make flatpak-development; ls flatpak-development;
+    - name: Upload Flatpak
+      uses: actions/upload-artifact@v2
+      with:
+        name: flatpak
+        path: flatpak-development
