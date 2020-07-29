@@ -58,11 +58,11 @@ uninstall :
 # Build a Flatpak package
 flatpak-development: target/release/rptable
 	mkdir -p flatpak-development
-	flatpak-builder flatpak-development data/com.pjtsearch.rptable-development.json
+	flatpak-builder --repo=flatpak-development/repo flatpak-development data/com.pjtsearch.rptable-development.json
 
 flatpak-release : target/release/rptable
 	mkdir -p flatpak
-	flatpak-builder flatpak data/com.pjtsearch.rptable.json
+	flatpak-builder --repo=flatpak/repo flatpak data/com.pjtsearch.rptable.json
 
 # Remove all files
 clean-all : clean
