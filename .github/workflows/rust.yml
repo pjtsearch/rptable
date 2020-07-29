@@ -37,4 +37,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: flatpak
-        path: --repo=flatpak-development/repo
+        path: flatpak-development/repo
