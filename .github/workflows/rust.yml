@@ -18,10 +18,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install dependencies
       run: |
-        sudo apt update; sudo apt install libgtk-3-dev flatpak flatpak-builder
-        flatpak --user remote-add --from flathub https://flathub.org/repo/flathub.flatpakrepo
-        flatpak --user install -y flathub org.gnome.Platform//3.36 org.gnome.Sdk//3.36
-        flatpak --user install -y flathub org.freedesktop.Sdk.Extension.rust-stable//19.08
+        sudo apt update; sudo apt install libgtk-3-dev
     - name: Build
       run: cargo build --release
     - name: DEB
@@ -31,10 +28,3 @@ jobs:
       with:
         name: deb
         path: deb/com.pjtsearch.rptable.deb
-    - name: Flatpak
-      run: make flatpak-development; ls flatpak-development/export; ls flatpak-development/files;
-    - name: Upload Flatpak
-      uses: actions/upload-artifact@v2
-      with:
-        name: flatpak
-        path: flatpak-development/export
