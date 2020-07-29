@@ -32,9 +32,9 @@ jobs:
         name: deb
         path: deb/com.pjtsearch.rptable.deb
     - name: Flatpak
-      run: make flatpak-development; ls flatpak-development/repo;
+      run: make flatpak-development; ls flatpak-development/export; ls flatpak-development/files;
     - name: Upload Flatpak
       uses: actions/upload-artifact@v2
       with:
         name: flatpak
-        path: flatpak-development/repo
+        path: flatpak-development/export
