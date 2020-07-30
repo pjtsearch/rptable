@@ -9,6 +9,10 @@ RPTable is a simple periodic table viewer for GTK written in Rust:sparkles:.
 
 ### Installation
 
+### Repositories
+AUR: [rptable-git](https://aur.archlinux.org/packages/rptable-git/)
+
+### From Source
 RPTable requires [Rust](https://www.rust-lang.org/) to run.
 
 ```sh
